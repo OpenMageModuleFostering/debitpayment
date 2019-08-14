@@ -1,0 +1,12 @@
+<config>
+    <modules>
+        <Mage_Debit>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Payment />
+            </depends>
+            <version>0.2.5</version>
+        </Mage_Debit>
+    </modules>
+</config>

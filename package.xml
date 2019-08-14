@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+    <name>DebitPayment</name>
+    <version>0.2.5</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Stellt die Zahlungsm&#xF6;glichkeit Lastschrift / Bankeinzug zur Verf&#xFC;gung</summary>
+    <description>Gerade in Deutschland geh&#xF6;rt die Lastschrift (Bankeinzug) zu den popul&#xE4;rsten Zahlungsm&#xF6;glichkeiten. Mit Hilfe dieser Erweiterung k&#xF6;nnen Sie Ihren Kunden die Zahlungsm&#xF6;glichkeit Lastschrift anbieten.</description>
+    <notes>Changelog:
+
+0.2.5.
+- Der Shopbesitzer kann nun einstellen, ob die Bankdaten verschl&#xFC;sselt oder unverschl&#xFC;sselt zum Lastschriftverfahren per E-Mail mitgesendet werden sollen
+
+0.2.1.
+- Bugfix
+
+0.2.0
+- Verschl&#xFC;sselung der Eintr&#xE4;ge in der Datenbank
+- &#xDC;berpr&#xFC;fung der BLZ im Backend und Anzeige, ob ein Fehler vorliegt oder nicht
+
+0.1.0
+- erste Ver&#xF6;ffentlichung mit einer Grundfunktionalit&#xE4;t</notes>
+    <authors><author><name>Rouven Rieker</name><user>auto-converted</user><email>rouven.rieker@itabs.de</email></author></authors>
+    <date>2009-02-07</date>
+    <time>16:34:02</time>
+    <contents><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="debit"><file name="form.phtml" hash="5523b08c1767e9eaffb252af29f80718"/><file name="info.phtml" hash="af01cdef43b2af06483ddf5c84df7839"/></dir></dir></dir></dir></dir><dir name="frontend"><dir name="default"><dir name="default"><dir name="template"><dir name="debit"><file name="form.phtml" hash="359998e4e4aa6aeaa7b4cdc8cef6ef37"/><file name="info.phtml" hash="aa5211c52b815920acca15170491a4d6"/></dir></dir></dir></dir></dir></target><target name="magelocale"><dir name="de_DE"><file name="Mage_Debit.csv" hash="58ba021ec4e69cf3c49dc795e2e5cbff"/></dir></target><target name="magecommunity"><dir name="Mage"><dir name="Debit"><dir name="Block"><file name="Form.php" hash="986b6fbbed998a8907db8e05a1966362"/><file name="Info.php" hash="9244dc85f1ae08395277aa19c20cd12d"/></dir><dir name="etc"><file name="bankleitzahlen.csv" hash="0966d54b7cd29c01146a00b0da436420"/><file name="config.xml" hash="2f39e76d4e3f4f9790675f9b9621c8be"/><file name="system.xml" hash="76977d9bcbab4b4abfb35aceafd1f1eb"/></dir><dir name="Helper"><file name="Data.php" hash="adda8efe6c0be3cb4c3378d12bedbcbc"/></dir><dir name="Model"><file name="Debit.php" hash="926348c9872438bb87a3b7d7d10f8103"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Mage_Debit.xml" hash="3636fbbab0592a0f2e4335672ba8f2e6"/></dir></target></contents>
+    <compatible/>
+    <dependencies/>
+</package>

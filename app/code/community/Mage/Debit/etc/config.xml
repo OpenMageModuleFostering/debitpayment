@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+        <models>
+            <debit>
+                <class>Mage_Debit_Model</class>
+            </debit>
+            <!-- <sales>
+                <rewrite>
+                    <quote>Mage_Debit_Model_Quote</quote>
+                </rewrite>
+            </sales> -->
+        </models>
+
+        <resources>
+            <debit_setup>
+                <setup>
+                    <module>Mage_Debit</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </debit_setup>
+            <debit_write>
+                <use>core_write</use>
+            </debit_write>
+            <debit_read>
+                <use>core_read</use>
+            </debit_read>
+        </resources>
+    </global>
+
+    <default>
+        <payment>
+            <debit>
+                <active>0</active>
+                <model>debit/debit</model>
+                <order_status>1</order_status>
+                <title>Debit Payment</title>
+                <allowspecific>0</allowspecific>
+            </debit>
+         </payment>
+    </default>
+
+    <adminhtml>       
+        <translate>
+            <modules>
+                <Mage_Debit>
+                    <files>
+                        <default>Mage_Debit.csv</default>
+                    </files>
+                </Mage_Debit>
+            </modules>
+        </translate>
+    </adminhtml>
+ 
+    <frontend>       
+        <translate>
+            <modules>
+                <Mage_Debit>
+                    <files>
+                        <default>Mage_Debit.csv</default>
+                    </files>
+                </Mage_Debit>
+            </modules>
+        </translate>        
+    </frontend> 
+</config>
