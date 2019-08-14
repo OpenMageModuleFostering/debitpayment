@@ -10,19 +10,12 @@
  * http://opensource.org/licenses/osl-3.0.php
  *
  * @package    Mage_Debit
- * @copyright  Copyright (c) 2010 ITABS GbR - Rouven Alexander Rieker
  * @copyright  Copyright (c) 2010 Phoenix Medien GmbH & Co. KG (http://www.phoenix-medien.de)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-class Mage_Debit_Block_Form extends Mage_Payment_Block_Form
+class Mage_Debit_Block_Account_Data extends Mage_Customer_Block_Account_Dashboard
 {
-    protected function _construct()
-    {
-        parent::_construct();
-        $this->setTemplate('debit/form.phtml');
-    }
-
     public function getBankName()
     {
         $blz = $this->getAccountBLZ();
@@ -38,25 +31,16 @@ class Mage_Debit_Block_Form extends Mage_Payment_Block_Form
 
     public function getAccountBLZ()
     {
-        if ($data = $this->getInfoData('cc_type')) {
-            return $this->getMethod()->getInfoInstance()->decrypt($data);
-        }
         return $this->_getAccountData('debit_payment_acount_blz');
     }
 
     public function getAccountName()
     {
-        if ($data = $this->getInfoData('cc_owner')) {
-            return $data;
-        }
         return $this->_getAccountData('debit_payment_acount_name');
     }
 
     public function getAccountNumber()
     {
-        if ($data = $this->getInfoData('cc_number')) {
-            return $data;
-        }
         return $this->_getAccountData('debit_payment_acount_number');
     }
 
@@ -70,13 +54,5 @@ class Mage_Debit_Block_Form extends Mage_Payment_Block_Form
             return '';
         }
         return $this->htmlEscape($data);
-    }
-
-    public function getCustomer()
-    {
-        if (Mage::app()->getStore()->isAdmin()) {
-            return Mage::getSingleton('adminhtml/session_quote')->getCustomer();
-        }
-        return Mage::getSingleton('customer/session')->getCustomer();
     }
 }

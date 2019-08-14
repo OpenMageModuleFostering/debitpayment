@@ -10,137 +10,62 @@
  * http://opensource.org/licenses/osl-3.0.php
  *
  * @package    Mage_Debit
- * @copyright  Copyright (c) 2009 ITABS GbR - Rouven Alexander Rieker
+ * @copyright  Copyright (c) 2010 ITABS GbR - Rouven Alexander Rieker
+ * @copyright  Copyright (c) 2010 Phoenix Medien GmbH & Co. KG (http://www.phoenix-medien.de)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-/**
- * Payment module base helper
- *
- * @author      Magento Core Team <core@magentocommerce.com>
- */
-class Mage_Debit_Helper_Data extends Mage_Core_Helper_Abstract
+class Mage_Debit_Helper_Data extends Mage_Payment_Helper_Data
 {
-    const XML_PATH_PAYMENT_METHODS = 'payment';
-
-    /**
-     * Retrieve method model object
-     *
-     * @param   string $code
-     * @return  Mage_Payment_Model_Method_Abstract
-     */
-    public function getMethodInstance($code)
+    public function getBankByBlz($blz)
     {
-        $key = self::XML_PATH_PAYMENT_METHODS.'/'.$code.'/model';
-        $class = Mage::getStoreConfig($key);
-        if (!$class) {
-            Mage::throwException($this->__('Can not configuration for payment method with code: %s', $code));
+        $data = $this->_loadBlzCache();
+        if (!$data) {
+            // open blz file handle
+            $io = new Varien_Io_File();
+            $io->open(array('path'=>Mage::getModuleDir('etc', 'Mage_Debit')));
+            $io->streamOpen('bankleitzahlen.csv', 'r');
+
+            // read csv stream
+            while (($line = $io->streamReadCsv(';')) !== false) {
+                $data[$line[0]] = $line[1];
+            }
+            $this->_saveBlzCache(serialize($data));
+        } else {
+            $data = unserialize($data);
         }
-        return Mage::getModel($class);
+        return empty($data[$blz]) ? null : $data[$blz];
     }
 
-    /**
-     * Retrieve available payment methods for store
-     *
-     * array structure:
-     *  $index => Varien_Simplexml_Element
-     *
-     * @param   mixed $store
-     * @return  array
-     */
-    public function getStoreMethods($store=null, $quote=null)
+    protected function _loadBlzCache()
     {
-        $methods = Mage::getStoreConfig(self::XML_PATH_PAYMENT_METHODS, $store);
-        $res = array();
-        foreach ($methods as $code => $methodConfig) {
-            $prefix = self::XML_PATH_PAYMENT_METHODS.'/'.$code.'/';
-
-            if (!Mage::getStoreConfigFlag($prefix.'active', $store)) {
-                continue;
-            }
-            if (!$model = Mage::getStoreConfig($prefix.'model', $store)) {
-                continue;
-            }
-
-            $methodInstance = Mage::getModel($model);
-
-            if ($methodInstance instanceof Mage_Payment_Model_Method_Cc && !Mage::getStoreConfig($prefix.'cctypes')) {
-                /* if the payment method has credit card types configuration option
-                   and no credit card type is enabled in configuration */
-                continue;
-            }
-
-            if ( !$methodInstance->isAvailable($quote) ) {
-                /* if the payment method can not be used at this time */
-                continue;
-            }
-
-            $sortOrder = (int)Mage::getStoreConfig($prefix.'sort_order', $store);
-            $methodInstance->setSortOrder($sortOrder);
-//            while (isset($res[$sortOrder])) {
-//                $sortOrder++;
-//            }
-//            $res[$sortOrder] = $methodInstance;
-            $res[] = $methodInstance;
+        if (!Mage::app()->useCache('config')) {
+            return false;
         }
-//        ksort($res);
-        //die('!');
-
-        //echo '<pre>';
-        //var_dump( (array)$res);
-        usort($res, array($this, '_sortMethods'));
-        //var_dump((array)$res);
-      //  echo '</pre>';
-        return $res;
+        return Mage::app()->loadCache($this->_getCacheKey());
     }
 
-    protected function _sortMethods($a, $b)
+    protected function _saveBlzCache($data)
     {
-       // var_dump($a);
-        if (is_object($a)) {
-            //var_dump($a->getData());
-            //var_dump($a->sort_order);
-            //die ();
-
-            return (int)$a->sort_order < (int)$b->sort_order ? -1 : ((int)$a->sort_order > (int)$b->sort_order ? 1 : 0);
+        if (!Mage::app()->useCache('config')) {
+            return false;
         }
-        return 0;
+        Mage::app()->saveCache($data, $this->_getCacheKey(), $this->_getCacheTags(), $this->_getCacheLifetime());
+        return $this;
     }
 
-    /**
-     * Retreive payment method form html
-     *
-     * @param   Mage_Payment_Model_Abstract $method
-     * @return  Mage_Payment_Block_Form
-     */
-    public function getMethodFormBlock(Mage_Payment_Model_Method_Abstract $method)
+    protected function _getCacheLifetime()
     {
-        $block = false;
-        $blockType = $method->getFormBlockType();
-        if ($this->getLayout()) {
-            $block = $this->getLayout()->createBlock($blockType);
-            $block->setMethod($method);
-        }
-        return $block;
+        return 3600*24;
     }
 
-    /**
-     * Retrieve payment information block
-     *
-     * @param   Mage_Payment_Model_Info $info
-     * @return  Mage_Core_Block_Template
-     */
-    public function getInfoBlock(Mage_Payment_Model_Info $info)
+    protected function _getCacheKey()
     {
-        $blockType = $info->getMethodInstance()->getInfoBlockType();
-        if ($this->getLayout()) {
-            $block = $this->getLayout()->createBlock($blockType);
-        }
-        else {
-            $className = Mage::getConfig()->getBlockClassName($blockType);
-            $block = new $className;
-        }
-        $block->setInfo($info);
-        return $block;
+        return 'debit_blz_bank_mapping';
+    }
+
+    protected function _getCacheTags()
+    {
+        return array(Mage_Core_Model_Config::CACHE_TAG);
     }
 }
