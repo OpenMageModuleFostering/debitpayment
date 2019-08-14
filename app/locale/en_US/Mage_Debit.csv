@@ -21,5 +21,6 @@
 "Debit account information was successfully saved","Debit account information was successfully saved"
 "Can't save customer","Can't save customer"
 "Please enter a valid bank code.","Please enter a valid bank code."
-"Please enter a valid bank acount number.","Please enter a valid bank acount number."
+"Please enter a valid bank acount number.","Please enter a valid bank account number."
 "Save account data","Save account data"
+"Checkout only with valid BLZ","Checkout only with valid BLZ"

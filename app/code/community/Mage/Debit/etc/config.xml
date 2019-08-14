@@ -60,6 +60,7 @@
                 <title>Debit Payment</title>
                 <allowspecific>0</allowspecific>
                 <save_account_data>0</save_account_data>
+                <checkout_valid_blz>0</checkout_valid_blz>
             </debit>
          </payment>
     </default>
@@ -90,9 +91,9 @@
         </translate>
         <layout>
             <updates>
-                <dabit>
+                <debit>
                     <file>debit.xml</file>
-                </dabit>
+                </debit>
             </updates>
         </layout>
         <routers>

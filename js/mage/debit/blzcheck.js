@@ -15,9 +15,10 @@
 
 var blzAjaxCheck = Class.create();
 blzAjaxCheck.prototype = {
-    initialize: function(checkBlzUrl){
+    initialize: function(checkBlzUrl, checkoutValidBlz){
         this.checkBlzUrl = checkBlzUrl;
         this.isBlzValid = false;
+        this.checkoutValidBlz = checkoutValidBlz;
     },
     checkBlz: function() {
         var request = new Ajax.Request(
@@ -53,8 +54,10 @@ Event.observe(window, 'load', function() {
     Validation.add('validate-debit-blz', Translator.translate('Please enter a valid bank code.'), function(v) {
 
         blzCheck.checkBlz();
-        if (!blzCheck.isBlzValid) {
-            return false;
+        if(blzCheck.checkoutValidBlz == 1) {       
+	        if (!blzCheck.isBlzValid) {
+	            return false;
+	        }
         }
 
         if (v.length == 8 || v.length == 5) {

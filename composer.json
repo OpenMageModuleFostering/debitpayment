@@ -3,7 +3,7 @@
     "type": "magento-module",
     "license": "OSL-v3.0",
     "homepage": "",
-    "description": "Stellt die Zahlungsmöglichkeit Lastschrift / Bankeinzug zur Verfügung",
+    "description": "Stellt die Zahlungsmöglichkeit Lastschrift / Bankeinzug zur Verfügung.",
     "authors": [
     {
         "name": "ITABS GbR - Rouven Rieker",

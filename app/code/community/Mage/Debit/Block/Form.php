@@ -79,4 +79,8 @@ class Mage_Debit_Block_Form extends Mage_Payment_Block_Form
         }
         return Mage::getSingleton('customer/session')->getCustomer();
     }
+    
+    public function getCheckoutValidBlz() {
+    	return Mage::getStoreConfigFlag('payment/debit/checkout_valid_blz');
+    }
 }
