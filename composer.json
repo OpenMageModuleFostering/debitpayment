@@ -1,13 +1,13 @@
 {
     "name": "OpenMageModuleFostering/DebitPayment",
     "type": "magento-module",
-    "license": "OSL-v3.0",
+    "license": "OSL-3.0",
     "homepage": "",
-    "description": "Stellt die Zahlungsmöglichkeit Lastschrift / Bankeinzug zur Verfügung.",
+    "description": "Provides the payment method DebitPayment",
     "authors": [
     {
         "name": "Rouven Alexander Rieker",
-        "email": "rouven.rieker@itabs.de"
+        "email": "therouv@googlemail.com"
     }
 ],
     "suggest": {
