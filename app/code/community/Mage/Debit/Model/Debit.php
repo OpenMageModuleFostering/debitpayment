@@ -9,9 +9,8 @@
  * that is available through the world-wide-web at this URL:
  * http://opensource.org/licenses/osl-3.0.php
  *
- * @category   Mage
  * @package    Mage_Debit
- * @copyright  Copyright (c) 2008 Rouven Rieker
+ * @copyright  Copyright (c) 2009 ITABS GbR - Rouven Alexander Rieker
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -101,7 +100,7 @@ class Mage_Debit_Model_Debit extends Mage_Payment_Model_Method_Abstract
 		$return = $info->getCcNumberEnc();
 		
 		if(strlen(intval($return)) == 1) $return = $this->decrypt($this->decrypt($return)); // decrypt twice!
-		
+				
 		return $return;
 	}
 	
