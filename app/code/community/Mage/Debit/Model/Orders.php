@@ -18,49 +18,27 @@
  * @package   Mage_Debit
  * @author    Rouven Alexander Rieker <rouven.rieker@itabs.de>
  * @copyright 2012 ITABS GmbH / Rouven Alexander Rieker (http://www.itabs.de)
- * @copyright 2010 Phoenix Medien GmbH & Co. KG (http://www.phoenix-medien.de)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @link      http://www.magentocommerce.com/extension/676/
  */
 /**
- * Customer Attribute Backend Encrypted
+ * Model for Export Orders
  *
  * @category  Mage
  * @package   Mage_Debit
  * @author    Rouven Alexander Rieker <rouven.rieker@itabs.de>
  * @copyright 2012 ITABS GmbH / Rouven Alexander Rieker (http://www.itabs.de)
- * @copyright 2010 Phoenix Medien GmbH & Co. KG (http://www.phoenix-medien.de)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @link      http://www.magentocommerce.com/extension/676/
  */
-class Mage_Debit_Model_Entity_Customer_Attribute_Backend_Encrypted
-    extends Mage_Eav_Model_Entity_Attribute_Backend_Abstract
+class Mage_Debit_Model_Orders extends Mage_Core_Model_Abstract
 {
     /**
-     * Encrypts the value before saving
-     *
-     * @param  <type> $object Object
-     * @return void
+     * (non-PHPdoc)
+     * @see Varien_Object::_construct()
      */
-    public function beforeSave($object)
+    protected function _construct()
     {
-        $helper = Mage::helper('core');
-        $attributeName = $this->getAttribute()->getName();
-        $value = $helper->encrypt($object->getData($attributeName));
-        $object->setData($attributeName, $value);
-    }
-
-    /**
-     * Decrypts the value after load
-     *
-     * @param  <type> $object Object
-     * @return void
-     */
-    public function afterLoad($object)
-    {
-        $helper = Mage::helper('core');
-        $attributeName = $this->getAttribute()->getName();
-        $value = $helper->decrypt($object->getData($attributeName));
-        $object->setData($attributeName, $value);
+        $this->_init('debit/orders');
     }
 }

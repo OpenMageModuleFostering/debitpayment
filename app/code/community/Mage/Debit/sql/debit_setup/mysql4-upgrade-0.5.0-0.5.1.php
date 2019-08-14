@@ -18,49 +18,24 @@
  * @package   Mage_Debit
  * @author    Rouven Alexander Rieker <rouven.rieker@itabs.de>
  * @copyright 2012 ITABS GmbH / Rouven Alexander Rieker (http://www.itabs.de)
- * @copyright 2010 Phoenix Medien GmbH & Co. KG (http://www.phoenix-medien.de)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @link      http://www.magentocommerce.com/extension/676/
  */
 /**
- * Customer Attribute Backend Encrypted
+ * Setup script
  *
  * @category  Mage
  * @package   Mage_Debit
  * @author    Rouven Alexander Rieker <rouven.rieker@itabs.de>
  * @copyright 2012 ITABS GmbH / Rouven Alexander Rieker (http://www.itabs.de)
- * @copyright 2010 Phoenix Medien GmbH & Co. KG (http://www.phoenix-medien.de)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @link      http://www.magentocommerce.com/extension/676/
  */
-class Mage_Debit_Model_Entity_Customer_Attribute_Backend_Encrypted
-    extends Mage_Eav_Model_Entity_Attribute_Backend_Abstract
-{
-    /**
-     * Encrypts the value before saving
-     *
-     * @param  <type> $object Object
-     * @return void
-     */
-    public function beforeSave($object)
-    {
-        $helper = Mage::helper('core');
-        $attributeName = $this->getAttribute()->getName();
-        $value = $helper->encrypt($object->getData($attributeName));
-        $object->setData($attributeName, $value);
-    }
 
-    /**
-     * Decrypts the value after load
-     *
-     * @param  <type> $object Object
-     * @return void
-     */
-    public function afterLoad($object)
-    {
-        $helper = Mage::helper('core');
-        $attributeName = $this->getAttribute()->getName();
-        $value = $helper->decrypt($object->getData($attributeName));
-        $object->setData($attributeName, $value);
-    }
-}
+$installer = $this;
+$installer->startSetup();
+
+$setup = new Mage_Eav_Model_Entity_Setup('core_setup');
+$setup->updateAttribute('customer', 'debit_payment_acount_update', 'frontend_input', 'date');
+
+$installer->endSetup();

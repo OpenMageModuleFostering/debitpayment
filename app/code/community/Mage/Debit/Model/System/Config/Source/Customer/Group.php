@@ -23,44 +23,44 @@
  * @link      http://www.magentocommerce.com/extension/676/
  */
 /**
- * Customer Attribute Backend Encrypted
+ * System Config Customer Groups
  *
  * @category  Mage
  * @package   Mage_Debit
  * @author    Rouven Alexander Rieker <rouven.rieker@itabs.de>
  * @copyright 2012 ITABS GmbH / Rouven Alexander Rieker (http://www.itabs.de)
- * @copyright 2010 Phoenix Medien GmbH & Co. KG (http://www.phoenix-medien.de)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * @link      http://www.magentocommerce.com/extension/676/
  */
-class Mage_Debit_Model_Entity_Customer_Attribute_Backend_Encrypted
-    extends Mage_Eav_Model_Entity_Attribute_Backend_Abstract
+class Mage_Debit_Model_System_Config_Source_Customer_Group
 {
     /**
-     * Encrypts the value before saving
-     *
-     * @param  <type> $object Object
-     * @return void
+     * @var array Customer Groups
      */
-    public function beforeSave($object)
-    {
-        $helper = Mage::helper('core');
-        $attributeName = $this->getAttribute()->getName();
-        $value = $helper->encrypt($object->getData($attributeName));
-        $object->setData($attributeName, $value);
-    }
+    protected $_options;
 
     /**
-     * Decrypts the value after load
+     * Returns the customer groups as an array for system configuration
      *
-     * @param  <type> $object Object
-     * @return void
+     * @return array Customer Groups
      */
-    public function afterLoad($object)
+    public function toOptionArray()
     {
-        $helper = Mage::helper('core');
-        $attributeName = $this->getAttribute()->getName();
-        $value = $helper->decrypt($object->getData($attributeName));
-        $object->setData($attributeName, $value);
+        if (!$this->_options) {
+            $collection = Mage::getResourceModel('customer/group_collection')
+                ->loadData()
+                ->toOptionArray();
+            $this->_options = $collection;
+
+            array_unshift(
+                $this->_options,
+                array(
+                    'value' => '',
+                    'label' => Mage::helper('debit')->__('-- Please Select --')
+                )
+            );
+        }
+
+        return $this->_options;
     }
 }

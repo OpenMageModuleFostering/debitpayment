@@ -1,53 +1,18 @@
 <?xml version="1.0"?>
 <package>
     <name>DebitPayment</name>
-    <version>0.4.1</version>
+    <version>0.5.3</version>
     <stability>stable</stability>
-    <license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
     <channel>community</channel>
     <extends/>
     <summary>Stellt die Zahlungsm&#xF6;glichkeit Lastschrift / Bankeinzug zur Verf&#xFC;gung.</summary>
     <description>Gerade in Deutschland und &#xD6;sterreich geh&#xF6;rt die Lastschrift (Bankeinzug) zu den popul&#xE4;rsten Zahlungsm&#xF6;glichkeiten. Mit Hilfe dieser Erweiterung k&#xF6;nnen Sie Ihren Kunden die Zahlungsm&#xF6;glichkeit Lastschrift anbieten.</description>
-    <notes>Changelog:
-
-0.4.1
-- Fehlende "debit.xml" zum Paket hinzugef&#xFC;gt
-- Bestellung auch ohne g&#xFC;ltige BLZ m&#xF6;glich gemacht / Im Benutzerkonto kann man jedoch nur eine g&#xFC;ltige BLZ angeben!
-- Neue Bankleitzahlen-Datei
-- Bugfixes
-
-0.4
-- Vollst&#xE4;ndiges Refactoring des Moduls
-- AJAX-Abfrage des Kreditinstituts
-- Caching der Bankinformationen zur Verbesserung der Performance
-- M&#xF6;glichkeit hinzugef&#xFC;gt, Kontodaten zu speichern und im Frontend und Backend zu bearbeiten
-- Formularfelder im Checkout vorausgef&#xFC;llt mit gespeicherten Bankdaten
-- Encryption Bug behoben
-- Erweiterung vollst&#xE4;ndig &#xFC;bersetzbar gemacht
-- Erweiterung auch f&#xFC;r StoreView konfigurierbar gemacht
-
-0.3
-- Anzeige der Bankdaten in der Rechnung
-- Anlegen von Bestellungen im Backend nun mit dieser Zahlungsart m&#xF6;glich
-- Bearbeiten von Bestellungen mit dieser Zahlungsart m&#xF6;glich
-- Bugfixes
-
-0.2.5.
-- Der Shopbesitzer kann nun einstellen, ob die Bankdaten verschl&#xFC;sselt oder unverschl&#xFC;sselt zum Lastschriftverfahren per E-Mail mitgesendet werden sollen
-
-0.2.1.
-- Bugfix
-
-0.2.0
-- Verschl&#xFC;sselung der Eintr&#xE4;ge in der Datenbank
-- &#xDC;berpr&#xFC;fung der BLZ im Backend und Anzeige, ob ein Fehler vorliegt oder nicht
-
-0.1.0
-- erste Ver&#xF6;ffentlichung mit einer Grundfunktionalit&#xE4;t</notes>
-    <authors><author><name>ITABS GbR - Rouven Rieker</name><user>auto-converted</user><email>rouven.rieker@itabs.de</email></author><author><name>Phoenix Medien GmbH </name><user>auto-converted</user><email>info@phoenix-medien.de</email></author></authors>
-    <date>2010-06-30</date>
-    <time>07:08:46</time>
-    <contents><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="debit"><file name="debit.phtml" hash="9dad4db2520b14b74419e2416442f32e"/><file name="form.phtml" hash="e6ebce751df4146eb927100a99ad5c54"/><file name="info.phtml" hash="894e5c8b91cb00b1d464b0e0705c2e68"/></dir></dir></dir></dir></dir><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><file name="debit.xml" hash="2f7e50c635131d2de11d5c14a64d39b9"/></dir><dir name="template"><dir name="debit"><dir name="account"><file name="data.phtml" hash="0e1fcb0ad94b25f7a48b49bd3bfcf633"/></dir><file name="form.phtml" hash="e69c89fbd779f8af1deedc39de3410ad"/><file name="info.phtml" hash="9b98213cd2d48058cc0bd9180f15d5ee"/></dir></dir></dir></dir></dir></target><target name="magelocale"><dir name="de_DE"><file name="Mage_Debit.csv" hash="575c4ace344a03252220321a2b0c549d"/></dir><dir name="en_US"><file name="Mage_Debit.csv" hash="63ad3ad4df88dae34016a5f0596ec51c"/></dir></target><target name="magecommunity"><dir name="Mage"><dir name="Debit"><dir name="Block"><dir name="Account"><file name="Data.php" hash="c880e83d45e0a0268138f3946b7eddf2"/></dir><file name="Form.php" hash="18d76dbc7e9009d91ede0413b7cdf0f7"/><file name="Info.php" hash="8c1c2dd6c719451ab3bb48dd5cf170db"/></dir><dir name="controllers"><file name="AccountController.php" hash="49fff8d469377dc4aec1d9ab63507d86"/><file name="AjaxController.php" hash="461d14f155c4d02a7b6d248e9d6c6b63"/></dir><dir name="etc"><file name="bankleitzahlen.csv" hash="f6de4771e2701638521fc746804a6b5a"/><file name="config.xml" hash="4f6f014383bf08c5b03583b4371617cf"/><file name="system.xml" hash="c0627255c00e05724308824bc5175d68"/></dir><dir name="Helper"><file name="Data.php" hash="08c7f0804ee000aa19ce9ad4a9f28b6c"/></dir><dir name="Model"><dir name="Entity"><dir name="Customer"><dir name="Attribute"><dir name="Backend"><file name="Encrypted.php" hash="02d8497cd75ce0c17e32e2f289801515"/></dir></dir></dir></dir><file name="Debit.php" hash="ff56c9a294b401e5b1708115406a785a"/><file name="Observer.php" hash="f17a3a254a730b53a5effb9adacbbf4b"/></dir><dir name="sql"><dir name="debit_setup"><file name="mysql4-upgrade-0.3.0-0.4.0.php" hash="e54ce893c9b68eb88b5f99bc095acace"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Mage_Debit.xml" hash="99c4ba099f743e86ce8a1c2339b4eff3"/></dir></target><target name="mage"><dir name="js"><dir name="mage"><dir name="debit"><file name="blzcheck.js" hash="65c125fc2bca9a39c2c5721b7549e9e0"/></dir></dir></dir></target></contents>
+    <notes>-</notes>
+    <authors><author><name>Rouven Alexander Rieker</name><user>therouv</user><email>rouven.rieker@itabs.de</email></author></authors>
+    <date>2012-10-31</date>
+    <time>09:36:06</time>
+    <contents><target name="magecommunity"><dir><dir name="Mage"><dir name="Debit"><dir name="Block"><dir name="Account"><file name="Data.php" hash="5ec87894004a522fd8d38b961f4822dc"/></dir><dir name="Adminhtml"><dir name="Order"><file name="Grid.php" hash="48f25e84eb680a78676b947f96dd6906"/></dir><file name="Order.php" hash="f01dc6ba410fc9948bab620715ccfd68"/></dir><file name="Form.php" hash="71ec19adbf20f06c8e0ccd3b5b3ecf91"/><file name="Info.php" hash="bfd6c54e68a62287a2136a72b2f1c162"/></dir><dir name="Helper"><file name="Adminhtml.php" hash="8bacc26f386ec126d813f9cea5519085"/><file name="Data.php" hash="25bd936b7fb2ca3a4fe6dc84a49eba34"/></dir><dir name="Model"><file name="Debit.php" hash="2f3636898922bb734a329bf3029e1cda"/><dir name="Entity"><dir name="Customer"><dir name="Attribute"><dir name="Backend"><file name="Encrypted.php" hash="94b4c27e902ba0625ac5a9f87fa96f54"/></dir></dir></dir></dir><dir name="Mysql4"><dir name="Orders"><file name="Collection.php" hash="9168652992a5a5a7363b692d63b2a779"/></dir><file name="Orders.php" hash="cf2ffc55752004a300abef1eff607188"/></dir><file name="Observer.php" hash="5bbd916c7c26299aadbd6a67cfcebffe"/><file name="Orders.php" hash="2e8db83c32da4d448c385dda85fe83be"/><dir name="System"><dir name="Config"><dir name="Source"><dir name="Customer"><file name="Group.php" hash="d4532ac24b67ae24f54860c6ccfb702d"/></dir></dir></dir></dir></dir><dir name="controllers"><file name="AccountController.php" hash="6a584c009a8562aac90d31d494e8b347"/><dir name="Adminhtml"><file name="OrderController.php" hash="4464ede36b05b6492cc5b7985bf417ad"/></dir><file name="AjaxController.php" hash="5beb576a11c36694549f3b06bcd216cb"/></dir><dir name="etc"><file name="adminhtml.xml" hash="38dcc403c12a5c8bd568148946804a7c"/><file name="bankleitzahlen.csv" hash="47834eb8f31d37940cac46f288fdb6b5"/><file name="config.xml" hash="98eb0edad20ad29fc472a005355889b7"/><file name="system.xml" hash="e71ad7bfb5beb8cb87ba4d6349ac3ad4"/></dir><dir name="sql"><dir name="debit_setup"><file name="mysql4-install-0.4.0.php" hash="e737bff708ac736d9fa2dc617cbc2bb5"/><file name="mysql4-upgrade-0.3.0-0.4.0.php" hash="e737bff708ac736d9fa2dc617cbc2bb5"/><file name="mysql4-upgrade-0.4.9-0.5.0.php" hash="1312e739a3f3b3ec429599248baa0dbc"/><file name="mysql4-upgrade-0.5.0-0.5.1.php" hash="89c41e07eae8d13b99718ef2dca56241"/><file name="mysql4-upgrade-0.5.1-0.5.2.php" hash="d1db3adfc37489a3c90df875b76e1c6d"/></dir></dir></dir></dir></dir></target><target name="mageetc"><dir><dir name="modules"><file name="Mage_Debit.xml" hash="4df52a50ed7f6a00007564224689413f"/></dir></dir></target><target name="magelocale"><dir><dir name="de_DE"><file name="Mage_Debit.csv" hash="d28e0eb0cb5c49439cd0e5170ecf40ab"/></dir><dir name="en_US"><file name="Mage_Debit.csv" hash="2768d31e1b5dd5ba7b4847d40587c33d"/></dir></dir></target><target name="magedesign"><dir><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="debit.xml" hash="f3ec75909b0a0b9891ac5955c13fcbef"/></dir><dir name="template"><dir name="debit"><file name="debit.phtml" hash="344aff2f527fb3e9f909410635da4a82"/><file name="form.phtml" hash="af659f3607a76ff8a38ca46fe993aa14"/><file name="info.phtml" hash="d26a60e5fe93bb1035fd054d9ee6a886"/></dir></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="debit.xml" hash="44790c6738874678d83c2c392b630f05"/></dir><dir name="template"><dir name="debit"><dir><dir name="account"><file name="data.phtml" hash="dc04eafc5e2a9e12bf6af0453842e2ee"/></dir></dir><file name="form.phtml" hash="5a9f4e89edeb7f71193eee3115e18940"/><file name="info.phtml" hash="a389aedc4ab07a2d8671a7cd1cbf1ae4"/></dir></dir></dir></dir></dir></dir></target><target name="mage"><dir><dir name="js"><dir name="mage"><dir name="debit"><file name="blzcheck.js" hash="4ab6fd01179d171c97bca611a2425617"/></dir></dir></dir></dir></target><target name="magelib"><dir><dir name="DTA"><file name="DTA.php" hash="e6fc2837be0ec433fa759485de446fe8"/><file name="DTABase.php" hash="824185c1a0d6d53a24787fb48268d694"/><file name="DTAZV.php" hash="851b8a15747129fa21945e2d28d435e2"/></dir></dir></target></contents>
     <compatible/>
-    <dependencies/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
 </package>
