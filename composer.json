@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/DebitPayment",
+    "name": "OpenMageModuleFostering\/DebitPayment",
     "type": "magento-module",
     "license": "OSL-3.0",
     "homepage": "",
     "description": "Provides the payment method DebitPayment",
     "authors": [
-    {
-        "name": "Rouven Alexander Rieker",
-        "email": "therouv@googlemail.com"
-    }
-],
+        {
+            "name": "Rouven Alexander Rieker",
+            "email": "therouv@googlemail.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
